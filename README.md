@@ -45,3 +45,26 @@ Open an issue in this GitHub repository.
 Alternativly, from the Google Cloud documentation, click **Send feedback** near
 the top right of the page or at the bottom of the page. This opens a feedback
 form.
+
+<!-- ARCH-DIAGRAM:START -->
+
+## Architecture
+
+> Auto-generated architecture diagram. See [`docs/context-map.md`](docs/context-map.md) for the full context map (core application, containers/cloud, and database connections).
+
+```mermaid
+flowchart TD
+  User([User / Client])
+  App["terraform-docs-samples<br/><small>index.js</small><br/>Express / Node"]
+  AI["Vertex AI / Gemini<br/>(LLM / Agent Engine)"]
+  DB0[("BigQuery (analytics)")]
+  TF["Terraform<br/>(infra)"]
+  Deploy["GKE / Kubernetes"]
+  User --> App
+  App --> AI
+  App --> DB0
+  App -.deploy.-> TF
+  TF -.deploy.-> Deploy
+```
+
+<!-- ARCH-DIAGRAM:END -->
